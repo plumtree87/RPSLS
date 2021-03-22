@@ -11,7 +11,8 @@ class Game:
 
     def game_start(self):
         print("Please choose if Player 1 will be Human or AI")
-        print("Press 0 for Human or 1 for AI")
+        print("If Human enter 0")
+        print("If AI enter 1")
         print(" ")
         while True:
             try:
@@ -40,7 +41,8 @@ class Game:
             player1 = AI()
             player1.name = "AI_Player1"
         print("OK, now please choose if Player 2 will be Human or AI")
-        print("Enter 0 for Human or 1 for AI")
+        print("If human enter 0")
+        print("If AI enter 1")
         print(" ")
         while True:
             try:
