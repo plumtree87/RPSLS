@@ -96,11 +96,12 @@ class Game:
                 return True
             self.game_rules(vs)
             print(" ")
-            print(player1.name, "has", player1.wins, "wins.")
-            print(player2.name, "has", player2.wins, "wins")
+            print("Score:", player1.wins, "vs", player2.wins)
             print(" ")
 
     def game_rules(self, vs):
+        print(vs[0].name, "chose", vs[0].gesture)
+        print(vs[1].name, "chose", vs[1].gesture)
         i = 0
         j = 1
         while j > -1 and i < 2:
