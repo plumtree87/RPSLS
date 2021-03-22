@@ -1,5 +1,5 @@
 from Player import Player, Human, AI
-import Gestures
+
 
 class Game:
     def __init__(self):
