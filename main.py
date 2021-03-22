@@ -5,6 +5,7 @@ if __name__ == '__main__':
     game = Game()
     game.game_start()
     while not game.game_end:
+        print(" ")
         re_play = input("Would you like to play again? Y or N")
         if re_play == "y" or re_play == "Y":
             game.game_end = False

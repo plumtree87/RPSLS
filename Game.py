@@ -74,6 +74,12 @@ class Game:
         print("READY??")
         vs = [player1, player2]
         while player1.wins < 2 or player2.wins < 2:
+            if player1.wins > player2.wins and player1.wins == 2:
+                print(player1.name, "WINS THE GAME!")
+                return True
+            if player2.wins > player1.wins and player2.wins == 2:
+                print(player2.name, "WINS THE GAME!")
+                return True
             if player1.type == "Human":
                 print(" ")
                 print(player1.name, "it's your turn")
@@ -88,18 +94,13 @@ class Game:
                 player1.gesture = AI().auto_gesture()
             if player2.type == "AI":
                 player2.gesture = AI().auto_gesture()
-            if player1.wins > player2.wins and player1.wins == 2:
-                print(player1.name, "WINS THE GAME!")
-                return True
-            if player2.wins > player1.wins and player2.wins == 2:
-                print(player2.name, "WINS THE GAME!")
-                return True
             self.game_rules(vs)
             print(" ")
             print("Score:", player1.wins, "vs", player2.wins)
             print(" ")
 
     def game_rules(self, vs):
+        print(" ")
         print(vs[0].name, "chose", vs[0].gesture)
         print(vs[1].name, "chose", vs[1].gesture)
         i = 0
