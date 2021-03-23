@@ -8,6 +8,7 @@ class Player:
         self.gesture = ""
         self.player_number = 1
         self.wins = 0
+        self.type = ""
 
 
 class Human(Player):
@@ -17,8 +18,9 @@ class Human(Player):
 
     def choose_gesture(self):
         i = 0
-        while i < len(Gestures().gestures):
-            print(f'{i}: {Gestures().gestures[i]}')
+        gestures = Gestures().gestures
+        while i < len(gestures):
+            print(f'{i}: {gestures[i]}')
             i += 1
         while True:
             try:
@@ -36,7 +38,7 @@ class Human(Player):
                 except ValueError:
                     print("Invalid input. Press either 0, 1, 2, 3, or 4:  ")
 
-        return Gestures().gestures[choice]
+        return gestures[choice]
 
 
 class AI(Player):
@@ -46,8 +48,9 @@ class AI(Player):
 
     def auto_gesture(self):
         i = random.randint(0, 4)
-        self.gesture = Gestures().gestures[i]
-        return Gestures().gestures[i]
+        gestures = Gestures().gestures
+        self.gesture = gestures[i]
+        return gestures[i]
 
 
 
