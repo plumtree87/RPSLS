@@ -16,9 +16,8 @@ class Human(Player):
         super().__init__()
         self.type = "Human"
 
-    def choose_gesture(self):
+    def choose_gesture(self, gestures):
         i = 0
-        gestures = Gestures().gestures
         while i < len(gestures):
             print(f'{i}: {gestures[i]}')
             i += 1
@@ -46,9 +45,8 @@ class AI(Player):
         super().__init__()
         self.type = "AI"
 
-    def auto_gesture(self):
+    def auto_gesture(self, gestures):
         i = random.randint(0, 4)
-        gestures = Gestures().gestures
         self.gesture = gestures[i]
         return gestures[i]
 

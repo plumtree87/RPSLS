@@ -1,4 +1,5 @@
 from Player import Player, Human, AI
+from Gestures import Gestures
 
 
 class Game:
@@ -9,10 +10,12 @@ class Game:
         self.winner = ""
         self.game_end = False
 
-    def game_start(self):
+    def game_start(self, game):
+        gestures = Gestures().gestures
         player1 = self.create_player1()
         player2 = self.create_player2()
-        self.game_rounds(player1, player2)
+        self.game_rounds(player1, player2, gestures)
+        self.replay(game)
 
 
     def game_rules(self, vs):
@@ -146,7 +149,7 @@ class Game:
             player2.player_number += 1
         return player2
 
-    def game_rounds(self, player1, player2):
+    def game_rounds(self, player1, player2, gestures):
         print(" ")
         print(player1.name, "VS", player2.name)
         print("READY??")
@@ -162,17 +165,34 @@ class Game:
                 print(" ")
                 print(player1.name, "it's your turn")
                 print(" ")
-                player1.gesture = Human().choose_gesture()
+                player1.gesture = Human().choose_gesture(gestures)
             if player2.type == "Human":
                 print(" ")
                 print(player2.name, "it's your turn")
                 print(" ")
-                player2.gesture = Human().choose_gesture()
+                player2.gesture = Human().choose_gesture(gestures)
             if player1.type == "AI":
-                player1.gesture = AI().auto_gesture()
+                player1.gesture = AI().auto_gesture(gestures)
             if player2.type == "AI":
-                player2.gesture = AI().auto_gesture()
+                player2.gesture = AI().auto_gesture(gestures)
             self.game_rules(vs)
             print(" ")
             print("Score:", player1.wins, "vs", player2.wins)
             print(" ")
+
+
+    def replay(self, game):
+        while not game.game_end:
+            print(" ")
+            re_play = input("Would you like to play again? Y or N")
+            if re_play == "y" or re_play == "Y":
+                game.game_end = False
+                game.round = 0
+                game.player2 = ""
+                game.player1 = ""
+                game.winner = ""
+                game.game_start(game)
+            if re_play == "n" or re_play == "N":
+                break
+            else:
+                print("Hmm")
