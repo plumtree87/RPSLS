@@ -161,20 +161,10 @@ class Game:
             if player2.wins > player1.wins and player2.wins == 2:
                 print(player2.name, "WINS THE GAME!")
                 return True
-            if player1.type == "Human":
-                print(" ")
-                print(player1.name, "it's your turn")
-                print(" ")
-                player1.gesture = Human().choose_gesture(gestures)
-            if player2.type == "Human":
-                print(" ")
-                print(player2.name, "it's your turn")
-                print(" ")
-                player2.gesture = Human().choose_gesture(gestures)
-            if player1.type == "AI":
-                player1.gesture = AI().auto_gesture(gestures)
-            if player2.type == "AI":
-                player2.gesture = AI().auto_gesture(gestures)
+            print(player1.name, "it's your turn.")
+            player1.gesture = player1.choose_gesture(gestures)
+            print(player2.name, "it's your turn.")
+            player2.gesture = player2.choose_gesture(gestures)
             self.game_rules(vs)
             print(" ")
             print("Score:", player1.wins, "vs", player2.wins)
@@ -184,7 +174,7 @@ class Game:
     def replay(self, game):
         while not game.game_end:
             print(" ")
-            re_play = input("Would you like to play again? Y or N")
+            re_play = input("Would you like to play again? y or n  ")
             if re_play == "y" or re_play == "Y":
                 game.game_end = False
                 game.round = 0
@@ -195,4 +185,4 @@ class Game:
             if re_play == "n" or re_play == "N":
                 break
             else:
-                print("Hmm")
+                print("Y or N")

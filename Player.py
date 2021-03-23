@@ -45,7 +45,7 @@ class AI(Player):
         super().__init__()
         self.type = "AI"
 
-    def auto_gesture(self, gestures):
+    def choose_gesture(self, gestures):
         i = random.randint(0, 4)
         self.gesture = gestures[i]
         return gestures[i]
